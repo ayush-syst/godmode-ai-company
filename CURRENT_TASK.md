@@ -9,10 +9,17 @@
 `C:\Users\Ayush\OneDrive\Desktop\GOD\`.
 
 ## Right now
-Open-source pivot done (MIT `LICENSE`, repo is public-ready; user flips visibility toggle). **GitHub repo
-live + pushing at milestones.** **`00-MASTER-BLUEPRINT.md` is COMPLETE** (all 13 parts + reality check).
-**Next: `company-os/` core files** — `_INDEX.md`, `00-architecture.md`, `12-company-brain.md`,
-`13-model-router.md` (Task #2).
+**Strategy + OSS-repo phase COMPLETE.** Done & pushed: `00-MASTER-BLUEPRINT.md` (13 parts + reality
+check), `README.md`, `LICENSE` (MIT), `.gitignore`, and the handoff system →
+https://github.com/ayush-syst/godmode-ai-company (user is flipping visibility to public).
+
+⏭️ **HANDING OFF TO A FRESH CHAT for the BUILD phase.** The next chat should start at **`company-os/` core
+files** (`_INDEX.md`, `00-architecture.md`, `12-company-brain.md`, `13-model-router.md` — Task #2), then
+the division files (Task #3), then `bootstrap/` install+config (Task #4), then
+`bootstrap/replication-engine/` + `bootstrap/90-DAY-PLAN.md`.
+
+Git remote `origin` is already set and credentials are cached, so `git add -A && git commit && git push`
+works directly. `gh` CLI is NOT installed (use git + the GitHub integration).
 
 ## Build order (author these, in order)
 1. ✅ `00-MASTER-BLUEPRINT.md` — full 13-part merged report (reality-check first)
@@ -20,7 +27,7 @@ live + pushing at milestones.** **`00-MASTER-BLUEPRINT.md` is COMPLETE** (all 13
 3. ⬜ `company-os/` division files (executive → finance/token-optimizer)
 4. ⬜ `bootstrap/0-enable-wsl.ps1`, `install.sh`, `CLAUDE.md`, `litellm-config.yaml`, `.env.example`
 5. ⬜ `bootstrap/replication-engine/` + `bootstrap/90-DAY-PLAN.md`
-6. ⬜ top-level `README.md` (overview + first 5 commands)
+6. ✅ top-level `README.md` (open-source front door + quick start) — done early
 
 ## Task IDs (in the session task list)
 - #1 Master blueprint
