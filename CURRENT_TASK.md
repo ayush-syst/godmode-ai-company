@@ -9,22 +9,24 @@
 `C:\Users\Ayush\OneDrive\Desktop\GOD\`.
 
 ## Right now
-**Strategy + OSS-repo phase COMPLETE.** Done & pushed: `00-MASTER-BLUEPRINT.md` (13 parts + reality
-check), `README.md`, `LICENSE` (MIT), `.gitignore`, and the handoff system →
-https://github.com/ayush-syst/godmode-ai-company (user is flipping visibility to public).
+**BUILD phase — Task #2 (company-os/ core) COMPLETE & pushed.** Authored the four core specs:
+`company-os/_INDEX.md`, `00-architecture.md` (3-layer model + Task Contract + the role-spec schema every
+division file must follow + conflict-resolution ladder + gate definitions), `12-company-brain.md` (4-store
+memory, write/read policy, doc schemas), `13-model-router.md` (difficulty→model routing, fallback chains,
+quota rotation, caching, budget guards).
 
-⏭️ **HANDING OFF TO A FRESH CHAT for the BUILD phase.** The next chat should start at **`company-os/` core
-files** (`_INDEX.md`, `00-architecture.md`, `12-company-brain.md`, `13-model-router.md` — Task #2), then
-the division files (Task #3), then `bootstrap/` install+config (Task #4), then
-`bootstrap/replication-engine/` + `bootstrap/90-DAY-PLAN.md`.
+⏭️ **NEXT: Task #3 — the 11 division files** (`01-executive` → `11-finance-token-optimizer`). They all
+follow the **role-spec schema defined in `00-architecture.md` §3** (Roles · Layer mapping · Inputs ·
+Outputs · Tools · Quality gates · Model routing · Memory · Escalation · Playbooks · KPIs). This step is
+templated/repetitive → a good candidate for **Sonnet 4.6** to conserve Opus quota (flag the user first).
 
 Git remote `origin` is already set and credentials are cached, so `git add -A && git commit && git push`
 works directly. `gh` CLI is NOT installed (use git + the GitHub integration).
 
 ## Build order (author these, in order)
 1. ✅ `00-MASTER-BLUEPRINT.md` — full 13-part merged report (reality-check first)
-2. ⬜ `company-os/_INDEX.md` + `00-architecture.md` + `12-company-brain.md` + `13-model-router.md`
-3. ⬜ `company-os/` division files (executive → finance/token-optimizer)
+2. ✅ `company-os/_INDEX.md` + `00-architecture.md` + `12-company-brain.md` + `13-model-router.md`
+3. ⬜ `company-os/` division files (executive → finance/token-optimizer) — use `00-architecture.md` §3 schema
 4. ⬜ `bootstrap/0-enable-wsl.ps1`, `install.sh`, `CLAUDE.md`, `litellm-config.yaml`, `.env.example`
 5. ⬜ `bootstrap/replication-engine/` + `bootstrap/90-DAY-PLAN.md`
 6. ✅ top-level `README.md` (open-source front door + quick start) — done early

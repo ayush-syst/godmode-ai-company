@@ -42,7 +42,8 @@ case. We do not over-promise full autonomy or "unhackable" security.
 | `.gitignore` | Excludes secrets/env/local settings | ✅ created |
 | `00-MASTER-BLUEPRINT.md` | Full 13-part merged report | ✅ created |
 | `README.md` | Open-source front door + quick start | ✅ created |
-| `company-os/` | Obsidian-ready vault (divisions/roles) | ⬜ to write |
+| `company-os/` (core) | `_INDEX`, `00-architecture`, `12-company-brain`, `13-model-router` | ✅ created |
+| `company-os/` (divisions) | `01-executive` … `11-finance-token-optimizer` | ⬜ to write |
 | `bootstrap/` | Runnable install + config + replication engine | ⬜ to write |
 
 > When you create/finish any of these, update the table.

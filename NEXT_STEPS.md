@@ -5,10 +5,11 @@
 > **Last updated:** 2026-06-04
 
 ## A. Finish authoring (immediate)
-- [ ] `00-MASTER-BLUEPRINT.md` (13 parts)
-- [ ] `company-os/` core + division files
+- [x] `00-MASTER-BLUEPRINT.md` (13 parts)
+- [x] `README.md`
+- [x] `company-os/` **core** (`_INDEX`, `00-architecture`, `12-company-brain`, `13-model-router`)
+- [ ] `company-os/` **division files** (`01-executive` … `11-finance-token-optimizer`) — follow `00-architecture.md` §3 schema
 - [ ] `bootstrap/` scripts, configs, replication engine, 90-day plan
-- [ ] `README.md`
 - [ ] Milestone checkpoint: refresh handoff docs, offer fresh chat
 
 ## B. Stand up the system (Phase 0, after authoring) — runs in WSL2/Ubuntu
