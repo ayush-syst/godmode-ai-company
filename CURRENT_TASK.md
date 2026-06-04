@@ -9,12 +9,13 @@
 `C:\Users\Ayush\OneDrive\Desktop\GOD\`.
 
 ## Right now
-Handoff docs + persistent memory are set up. **Next file to write: `00-MASTER-BLUEPRINT.md`** (the full
-13-part merged report). This is the start of the "big build" — the user has been given the
-model-escalation heads-up.
+Open-source pivot done (MIT `LICENSE`, repo is public-ready; user flips visibility toggle). **GitHub repo
+live + pushing at milestones.** **`00-MASTER-BLUEPRINT.md` is COMPLETE** (all 13 parts + reality check).
+**Next: `company-os/` core files** — `_INDEX.md`, `00-architecture.md`, `12-company-brain.md`,
+`13-model-router.md` (Task #2).
 
 ## Build order (author these, in order)
-1. ⬜ `00-MASTER-BLUEPRINT.md` — full 13-part merged report (reality-check first)
+1. ✅ `00-MASTER-BLUEPRINT.md` — full 13-part merged report (reality-check first)
 2. ⬜ `company-os/_INDEX.md` + `00-architecture.md` + `12-company-brain.md` + `13-model-router.md`
 3. ⬜ `company-os/` division files (executive → finance/token-optimizer)
 4. ⬜ `bootstrap/0-enable-wsl.ps1`, `install.sh`, `CLAUDE.md`, `litellm-config.yaml`, `.env.example`

@@ -40,7 +40,7 @@ case. We do not over-promise full autonomy or "unhackable" security.
 | `NEXT_STEPS.md` | Ordered future tasks | ✅ created |
 | `LICENSE` | MIT license (open source) | ✅ created |
 | `.gitignore` | Excludes secrets/env/local settings | ✅ created |
-| `00-MASTER-BLUEPRINT.md` | Full 13-part merged report | ⬜ to write |
+| `00-MASTER-BLUEPRINT.md` | Full 13-part merged report | ✅ created |
 | `README.md` | Overview + first 5 commands | ⬜ to write |
 | `company-os/` | Obsidian-ready vault (divisions/roles) | ⬜ to write |
 | `bootstrap/` | Runnable install + config + replication engine | ⬜ to write |
