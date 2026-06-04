@@ -41,17 +41,17 @@
 
 | # | File | Division | Layer | Powered by | Status |
 |---|---|---|---|---|---|
-| 01 | [[01-executive]] | Executive (CEO/COO/CTO/CFO/CPO/CSO) | 1 | gstack `/office-hours`, `/plan-*-review` | ⬜ |
-| 02 | [[02-research]] | Research (market/competitor/opportunity/trend) | 2 | CrewAI + browser-use + Firecrawl | ⬜ |
-| 03 | [[03-product]] | Product (PM/requirements/UX/journey) | 1→2 | gstack planning + ruflo workers | ⬜ |
-| 04 | [[04-engineering]] | Engineering (architect/BE/FE/DevOps/DB/test/docs) | 1+2 | gstack build/review + OpenHands | ⬜ |
-| 05 | [[05-design]] | Design (research/animation/inspiration/identity) | 1+2 | gstack `/design-*` + scrape crew | ⬜ |
-| 06 | [[06-marketing]] | Marketing (SEO/content/copy/social/video/growth) | 2 | CrewAI + n8n | ⬜ |
-| 07 | [[07-sales]] | Sales (lead-disc/qualify/outreach/CRM/follow-up) | 2 | CrewAI + n8n + CRM | ⬜ |
-| 08 | [[08-customer-success]] | Customer Success (support/feedback/churn) | 2 | n8n + LLM triage | ⬜ |
-| 09 | [[09-security]] | Cybersecurity (threat/scan/deps/pentest/infra-sec) | 1+2 | gstack `/cso` + Semgrep/Trivy/ZAP/gitleaks | ⬜ |
-| 10 | [[10-infrastructure]] | Infrastructure (cloud/monitoring/scaling/reliability) | 1+2 | Coolify/k3s + Grafana/Prometheus/Sentry | ⬜ |
-| 11 | [[11-finance-token-optimizer]] | Finance (revenue/cost/**token-optimizer**/API-usage) | service | LiteLLM + OpenRouter + Langfuse | ⬜ |
+| 01 | [[01-executive]] | Executive (CEO/COO/CTO/CFO/CPO/CSO) | 1 | gstack `/office-hours`, `/plan-*-review` | ✅ |
+| 02 | [[02-research]] | Research (market/competitor/opportunity/trend) | 2 | CrewAI + browser-use + Firecrawl | ✅ |
+| 03 | [[03-product]] | Product (PM/requirements/UX/journey) | 1→2 | gstack planning + ruflo workers | ✅ |
+| 04 | [[04-engineering]] | Engineering (architect/BE/FE/DevOps/DB/test/docs) | 1+2 | gstack build/review + OpenHands | ✅ |
+| 05 | [[05-design]] | Design (research/animation/inspiration/identity) | 1+2 | gstack `/design-*` + scrape crew | ✅ |
+| 06 | [[06-marketing]] | Marketing (SEO/content/copy/social/video/growth) | 2 | CrewAI + n8n | ✅ |
+| 07 | [[07-sales]] | Sales (lead-disc/qualify/outreach/CRM/follow-up) | 2 | CrewAI + n8n + CRM | ✅ |
+| 08 | [[08-customer-success]] | Customer Success (support/feedback/churn) | 2 | n8n + LLM triage | ✅ |
+| 09 | [[09-security]] | Cybersecurity (threat/scan/deps/pentest/infra-sec) | 1+2 | gstack `/cso` + Semgrep/Trivy/ZAP/gitleaks | ✅ |
+| 10 | [[10-infrastructure]] | Infrastructure (cloud/monitoring/scaling/reliability) | 1+2 | Coolify/k3s + Grafana/Prometheus/Sentry | ✅ |
+| 11 | [[11-finance-token-optimizer]] | Finance (revenue/cost/**token-optimizer**/API-usage) | service | LiteLLM + OpenRouter + Langfuse | ✅ |
 
 > When you finish a file, flip its status here **and** in [`PROJECT_CONTEXT.md`](../PROJECT_CONTEXT.md) §1.
 

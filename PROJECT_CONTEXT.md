@@ -43,7 +43,7 @@ case. We do not over-promise full autonomy or "unhackable" security.
 | `00-MASTER-BLUEPRINT.md` | Full 13-part merged report | ✅ created |
 | `README.md` | Open-source front door + quick start | ✅ created |
 | `company-os/` (core) | `_INDEX`, `00-architecture`, `12-company-brain`, `13-model-router` | ✅ created |
-| `company-os/` (divisions) | `01-executive` … `11-finance-token-optimizer` | ⬜ to write |
+| `company-os/` (divisions) | `01-executive` … `11-finance-token-optimizer` (all 11 files) | ✅ created |
 | `bootstrap/` | Runnable install + config + replication engine | ⬜ to write |
 
 > When you create/finish any of these, update the table.

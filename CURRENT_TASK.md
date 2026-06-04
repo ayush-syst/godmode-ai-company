@@ -15,21 +15,34 @@ division file must follow + conflict-resolution ladder + gate definitions), `12-
 memory, write/read policy, doc schemas), `13-model-router.md` (difficulty→model routing, fallback chains,
 quota rotation, caching, budget guards).
 
-⏭️ **NEXT: Task #3 — the 11 division files** (`01-executive` → `11-finance-token-optimizer`). They all
-follow the **role-spec schema defined in `00-architecture.md` §3** (Roles · Layer mapping · Inputs ·
-Outputs · Tools · Quality gates · Model routing · Memory · Escalation · Playbooks · KPIs). This step is
-templated/repetitive → a good candidate for **Sonnet 4.6** to conserve Opus quota (flag the user first).
+## Right now
+**BUILD phase — Tasks #2 & #3 (full company-os/) COMPLETE & pushed.**
 
-Git remote `origin` is already set and credentials are cached, so `git add -A && git commit && git push`
-works directly. `gh` CLI is NOT installed (use git + the GitHub integration).
+`company-os/` is fully authored (15 files total):
+- Core: `_INDEX`, `00-architecture`, `12-company-brain`, `13-model-router`
+- Divisions: `01-executive` through `11-finance-token-optimizer` (all 11, all following the §3 schema)
 
-## Build order (author these, in order)
-1. ✅ `00-MASTER-BLUEPRINT.md` — full 13-part merged report (reality-check first)
-2. ✅ `company-os/_INDEX.md` + `00-architecture.md` + `12-company-brain.md` + `13-model-router.md`
-3. ⬜ `company-os/` division files (executive → finance/token-optimizer) — use `00-architecture.md` §3 schema
-4. ⬜ `bootstrap/0-enable-wsl.ps1`, `install.sh`, `CLAUDE.md`, `litellm-config.yaml`, `.env.example`
-5. ⬜ `bootstrap/replication-engine/` + `bootstrap/90-DAY-PLAN.md`
-6. ✅ top-level `README.md` (open-source front door + quick start) — done early
+⏭️ **NEXT: Task #4 — the `bootstrap/` kit.** This is the *runnable* half of the project:
+- `0-enable-wsl.ps1` — PowerShell script to enable WSL2 + Docker Desktop
+- `install.sh` — Ubuntu install script (Claude Code, gstack, ruflo, OpenHands, CrewAI, n8n, scanners)
+- `CLAUDE.md` — gstack project configuration for Claude Code
+- `litellm-config.yaml` — the Token Optimizer router config (implements `13-model-router`)
+- `.env.example` — template for all API keys (never committed with real values)
+And then Task #5: `bootstrap/replication-engine/` (CrewAI Python + run.py) + `bootstrap/90-DAY-PLAN.md`.
+
+**MODEL ESCALATION NOTE:** Tasks #4–5 involve real code (bash scripts, Python/CrewAI, YAML config,
+security-sensitive .env patterns) → **recommend switching back to Opus 4.8** before starting them.
+Flag the user before Task #4 begins.
+
+Git remote `origin` is already set and credentials are cached.
+
+## Build order
+1. ✅ `00-MASTER-BLUEPRINT.md`
+2. ✅ `company-os/` core (4 files)
+3. ✅ `company-os/` division files (11 files)
+4. ⬜ `bootstrap/` scripts + configs (Task #4)
+5. ⬜ `bootstrap/replication-engine/` + `bootstrap/90-DAY-PLAN.md` (Task #5)
+6. ✅ top-level `README.md`
 
 ## Task IDs (in the session task list)
 - #1 Master blueprint

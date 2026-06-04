@@ -8,8 +8,9 @@
 - [x] `00-MASTER-BLUEPRINT.md` (13 parts)
 - [x] `README.md`
 - [x] `company-os/` **core** (`_INDEX`, `00-architecture`, `12-company-brain`, `13-model-router`)
-- [ ] `company-os/` **division files** (`01-executive` … `11-finance-token-optimizer`) — follow `00-architecture.md` §3 schema
-- [ ] `bootstrap/` scripts, configs, replication engine, 90-day plan
+- [x] `company-os/` **division files** (`01-executive` … `11-finance-token-optimizer`) — all 11 complete
+- [ ] `bootstrap/` scripts + configs: `0-enable-wsl.ps1`, `install.sh`, `CLAUDE.md`, `litellm-config.yaml`, `.env.example`
+- [ ] `bootstrap/replication-engine/` (CrewAI Python crew + `run.py`) + `bootstrap/90-DAY-PLAN.md`
 - [ ] Milestone checkpoint: refresh handoff docs, offer fresh chat
 
 ## B. Stand up the system (Phase 0, after authoring) — runs in WSL2/Ubuntu
