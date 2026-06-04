@@ -9,7 +9,7 @@
 `gstack` (human-gated spine) · `ruflo` (autonomous swarm) · free-model routing · startup-replication engine
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Status](https://img.shields.io/badge/status-building-orange)
+![Status](https://img.shields.io/badge/status-kit%20complete%20%C2%B7%20ready%20to%20build-brightgreen)
 ![Built for](https://img.shields.io/badge/built%20for-solo%20founders-blue)
 
 </div>
@@ -60,7 +60,8 @@ autonomous agents fails multiplicatively (0.95¹⁰⁰ ≈ 0.6%). Gates are the 
 
 ## Quick start
 
-> 🚧 **Status:** the blueprint is complete; the `bootstrap/` kit is being built (see [Roadmap](#project-status--roadmap)).
+> ✅ **Status:** the blueprint, the `company-os/` operational specs, **and** the `bootstrap/` kit are all
+> complete. Next phase is standing it up and shipping a product (see [`bootstrap/90-DAY-PLAN.md`](bootstrap/90-DAY-PLAN.md)).
 > Target environment is **WSL2 / Ubuntu** on Windows (or any Linux/macOS).
 
 ```bash
@@ -85,8 +86,8 @@ python bootstrap/replication-engine/run.py "clone a US startup for India"
 ```
 GOD/
 ├── 00-MASTER-BLUEPRINT.md     # The full 13-part plan (start here)
-├── company-os/                # Operational specs: one file per division/role  🚧
-├── bootstrap/                 # Runnable kit: install, configs, replication engine  🚧
+├── company-os/                # Operational specs: 15 files (architecture, brain, router, 11 divisions)  ✅
+├── bootstrap/                 # Runnable kit: WSL enable, install.sh, LiteLLM config, replication engine  ✅
 ├── PROJECT_CONTEXT.md         # Self-contained project memory (for fresh-chat handoff)
 ├── CURRENT_TASK.md            # What's being worked on now
 ├── NEXT_STEPS.md              # The forward queue
@@ -98,10 +99,11 @@ GOD/
 
 - [x] Master blueprint (13 parts + reality check)
 - [x] Open-source repo + MIT license + context-handoff system
-- [ ] `company-os/` — division/role operational specs
-- [ ] `bootstrap/` — WSL enable, install script, `CLAUDE.md`, LiteLLM token-optimizer config
-- [ ] `bootstrap/replication-engine/` — the clone-a-US-startup-for-India workflow
-- [ ] `bootstrap/90-DAY-PLAN.md` — the execution checklist
+- [x] `company-os/` — 15 operational specs (architecture, company-brain, model-router, 11 divisions)
+- [x] `bootstrap/` — WSL enable, install script, `CLAUDE.md`, LiteLLM token-optimizer config, `.env.example`
+- [x] `bootstrap/replication-engine/` — the clone-a-US-startup-for-India workflow (runnable; `--demo` mode)
+- [x] `bootstrap/90-DAY-PLAN.md` — the Phase-0 execution checklist
+- [ ] **Phase 0:** stand up the stack → pick a product → build → ship → first users (the 90-day plan)
 
 ## Philosophy
 

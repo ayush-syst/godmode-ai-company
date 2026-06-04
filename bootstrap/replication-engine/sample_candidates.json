@@ -1,0 +1,104 @@
+[
+  {
+    "name": "CreatorKit",
+    "one_liner": "Linktree-style monetization hub for India's creators (paid links, tips via UPI, mini-storefronts).",
+    "us_signal": "Linktree/Beacons reached tens of millions of users; creator-economy tooling is a proven category.",
+    "scores": {"tam": 4, "demand": 5, "competition": 3, "feasibility": 5, "reg_lightness": 5, "distribution": 5, "monetization": 3, "moat": 2},
+    "rationale": {
+      "tam": "India has 100M+ creators; the monetizing subset is smaller but growing fast.",
+      "demand": "Creators already pay for link/tip/store tools globally.",
+      "competition": "Some local players, but the space is fragmented and not locked up.",
+      "feasibility": "A link-in-bio + UPI tips MVP is genuinely shippable in weeks.",
+      "reg_lightness": "No licensing; UPI payouts via a PSP keep compliance light.",
+      "distribution": "Creators self-distribute the product to their own audiences — viral by design.",
+      "monetization": "Low ARPU; relies on volume + a take-rate on tips/sales.",
+      "moat": "Thin — differentiation is taste, speed, and India-native payouts."
+    },
+    "india_fit": "Strong: UPI tips and ₹ micro-pricing fit creator behavior; Hindi + regional language UI matters; distribution rides the creators themselves via Instagram/YouTube."
+  },
+  {
+    "name": "ShopWhats",
+    "one_liner": "WhatsApp-first storefront builder for kirana and small retailers (catalog, orders, UPI checkout).",
+    "us_signal": "Shopify proved storefront SaaS; the India twist is WhatsApp-native commerce.",
+    "scores": {"tam": 5, "demand": 4, "competition": 2, "feasibility": 4, "reg_lightness": 4, "distribution": 5, "monetization": 3, "moat": 2},
+    "rationale": {
+      "tam": "Tens of millions of small retailers; huge and underserved.",
+      "demand": "SMBs already sell over WhatsApp manually — clear pull.",
+      "competition": "Dukaan/Bikayi and others are well-funded incumbents — real competition.",
+      "feasibility": "Catalog + order + payment link MVP is achievable for a small team.",
+      "reg_lightness": "Mostly light; GST invoicing adds some work but no licensing.",
+      "distribution": "WhatsApp Business + word-of-mouth among shopkeepers is cheap and fast.",
+      "monetization": "Price sensitivity is high; ₹ pricing must be very low.",
+      "moat": "Network effects per merchant's customers, but switching costs are modest."
+    },
+    "india_fit": "Excellent: WhatsApp is the de-facto commerce channel; UPI checkout + ₹ pricing essential; regional languages a must. Main flag: strong funded incumbents."
+  },
+  {
+    "name": "InvoiceFlow",
+    "one_liner": "GST-native invoicing + payment-reminder SaaS for Indian freelancers and SMBs.",
+    "us_signal": "FreshBooks/Bill.com validated SMB invoicing; recurring, sticky revenue.",
+    "scores": {"tam": 5, "demand": 4, "competition": 2, "feasibility": 4, "reg_lightness": 3, "distribution": 4, "monetization": 4, "moat": 2},
+    "rationale": {
+      "tam": "Millions of GST-registered SMBs and freelancers.",
+      "demand": "Invoicing + getting paid is a real, recurring pain people pay to solve.",
+      "competition": "Zoho, Khatabook, Vyapar are entrenched — tough field.",
+      "feasibility": "Well-understood domain; MVP is buildable, GST adds scope.",
+      "reg_lightness": "GST e-invoicing compliance is moderate, manageable work.",
+      "distribution": "SEO + CA/accountant referral channels are automatable.",
+      "monetization": "Clear willingness to pay; subscription fits.",
+      "moat": "Data lock-in over time, but incumbents already have it."
+    },
+    "india_fit": "Good: GST e-invoicing is the localization core; UPI payment reminders are a natural feature; ₹ subscription pricing. Main flag: crowded incumbent field."
+  },
+  {
+    "name": "DocketAI",
+    "one_liner": "Document automation + matter management for India's small law firms.",
+    "us_signal": "Clio and US legal SaaS proved small-firm willingness to pay for practice tools.",
+    "scores": {"tam": 3, "demand": 3, "competition": 4, "feasibility": 3, "reg_lightness": 3, "distribution": 3, "monetization": 4, "moat": 3},
+    "rationale": {
+      "tam": "Niche but real; many small firms, lower digitization.",
+      "demand": "Demand exists but adoption is slow and relationship-driven.",
+      "competition": "Few strong India-specific incumbents — a genuine gap.",
+      "feasibility": "Doc templates + AI drafting is feasible; integrations add work.",
+      "reg_lightness": "Client-data sensitivity (DPDP) adds care but no licensing.",
+      "distribution": "Bar associations + referrals; harder to automate cheaply.",
+      "monetization": "Professionals pay for time-savings — decent ARPU.",
+      "moat": "Workflow lock-in + India legal templates create some durability."
+    },
+    "india_fit": "Moderate: needs India legal templates and language support; DPDP-compliant data handling; distribution is relationship-heavy, which slows a solo founder."
+  },
+  {
+    "name": "LendBuddy",
+    "one_liner": "BNPL / micro-credit app for India's thin-file consumers (an Affirm-style model).",
+    "us_signal": "Affirm/Klarna proved massive BNPL demand and revenue.",
+    "scores": {"tam": 5, "demand": 4, "competition": 3, "feasibility": 1, "reg_lightness": 0, "distribution": 3, "monetization": 4, "moat": 2},
+    "rationale": {
+      "tam": "Enormous credit-hungry market.",
+      "demand": "Clear consumer demand for short-term credit.",
+      "competition": "Several players, space is contested but not closed.",
+      "feasibility": "NOT solo-feasible: needs lending licence, capital, underwriting, collections.",
+      "reg_lightness": "Heaviest possible — RBI/NBFC rules, digital-lending guidelines.",
+      "distribution": "Acquisition is expensive and trust-gated.",
+      "monetization": "Strong unit economics IF you can lend legally.",
+      "moat": "Data + balance sheet — neither available to a solo founder early."
+    },
+    "india_fit": "Poor for a solo founder despite the huge market: RBI digital-lending regulation and capital requirements make this infeasible to MVP alone. Included to show the rubric correctly penalizes regulatory/feasibility load."
+  },
+  {
+    "name": "HealthLog",
+    "one_liner": "Personal health-record + medication tracker app for Indian patients and caregivers.",
+    "us_signal": "US health-tracking apps show engagement, though monetization is hard.",
+    "scores": {"tam": 4, "demand": 3, "competition": 4, "feasibility": 2, "reg_lightness": 1, "distribution": 2, "monetization": 2, "moat": 2},
+    "rationale": {
+      "tam": "Large population, rising health awareness.",
+      "demand": "Interest is real but willingness to pay is weak.",
+      "competition": "Few sticky India-specific incumbents.",
+      "feasibility": "Health-data handling and integrations are heavy for a solo team.",
+      "reg_lightness": "Health data is highly sensitive under DPDP — heavy compliance.",
+      "distribution": "No cheap viral channel; trust-gated.",
+      "monetization": "Consumers rarely pay for health trackers directly.",
+      "moat": "Weak — data sensitivity raises liability without a clear moat."
+    },
+    "india_fit": "Weak: health-data sensitivity under the DPDP Act is a serious compliance burden, monetization is unproven, and there's no cheap distribution channel."
+  }
+]

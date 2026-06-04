@@ -14,7 +14,8 @@ Solo founder (Ayush) is building a **(near) one-person "AI company"** — a syst
 that can discover/validate ideas, build products, design world-class UIs, market, sell, support, secure,
 scale, and optimize its own token/credit spend. Philosophy: **assemble the best existing open-source
 repos, don't build from scratch.** Deliverable = a **master blueprint document + a runnable bootstrap
-kit**. We are currently in the **authoring phase** (writing the blueprint + kit files into this folder).
+kit**. **AUTHORING IS COMPLETE** (blueprint + `company-os/` specs + `bootstrap/` kit, all committed &
+pushed). Next phase = **execution**: stand up the stack and ship the first product (`bootstrap/90-DAY-PLAN.md`).
 
 **Honesty mandate (core to this project):** We build the *realistic* strong version — a semi-autonomous,
 human-gated AI product studio that lets one person operate like a 20–50 person company, targeting
@@ -25,10 +26,13 @@ case. We do not over-promise full autonomy or "unhackable" security.
 
 ## 1. Current project state
 
-- **Phase:** Authoring the deliverables (blueprint + bootstrap kit). No code has been executed yet.
+- **Phase:** ✅ **Authoring COMPLETE.** All deliverables written, committed & pushed. The replication
+  engine's deterministic path is **verified** (`python run.py --demo` ranks the sample set correctly).
+  Next phase = execution (Phase 0 / the 90-day plan) — not yet started.
 - **Working directory / project root:** `C:\Users\Ayush\OneDrive\Desktop\GOD\`
 - **OS / shell:** Windows 11 Home, PowerShell. **Target runtime for the agent stack = WSL2 / Ubuntu.**
-- **Git:** Not a git repo yet (will `git init` during bootstrap).
+- **Git:** ✅ Active repo; remote `origin` → https://github.com/ayush-syst/godmode-ai-company (public, MIT).
+  Credentials cached; `git add -A && git commit && git push` works. `gh` CLI NOT installed (use git + GitHub tools).
 - **Approved plan file:** `C:\Users\Ayush\.claude\plans\c-users-ayush-downloads-ai-company-blue-fluffy-valley.md`
 - **Source prompt:** `C:\Users\Ayush\Downloads\ai_company_blueprint.md` (the user's original 13-part "GODMODE Architect" brief — we keep all 13 parts and merge our own architecture in).
 
@@ -44,7 +48,9 @@ case. We do not over-promise full autonomy or "unhackable" security.
 | `README.md` | Open-source front door + quick start | ✅ created |
 | `company-os/` (core) | `_INDEX`, `00-architecture`, `12-company-brain`, `13-model-router` | ✅ created |
 | `company-os/` (divisions) | `01-executive` … `11-finance-token-optimizer` (all 11 files) | ✅ created |
-| `bootstrap/` | Runnable install + config + replication engine | ⬜ to write |
+| `bootstrap/` (scripts+config) | `0-enable-wsl.ps1`, `install.sh`, `CLAUDE.md`, `litellm-config.yaml`, `.env.example` | ✅ created |
+| `bootstrap/replication-engine/` | `run.py`, `crew.py`, `rubric.py`, `sample_candidates.json`, `requirements.txt`, `README.md` | ✅ created (demo verified) |
+| `bootstrap/90-DAY-PLAN.md` | Phase-0 execution checklist | ✅ created |
 
 > When you create/finish any of these, update the table.
 
@@ -193,15 +199,18 @@ paid/self-hosted there. "Free keys forever, no limits" is a fantasy.
 
 ---
 
-## 6. Open tasks (authoring) — mirror of the task list
+## 6. Authoring tasks — ✅ ALL COMPLETE
 
-1. **Write `00-MASTER-BLUEPRINT.md`** — full 13-part merged report (reality-check first).
-2. **Write `company-os/` core files** — `_INDEX`, architecture, company-brain, model-router.
-3. **Write `company-os/` division role files** — exec, research, product, engineering, design, marketing,
-   sales, customer-success, security, infrastructure, finance/token-optimizer.
-4. **Write `bootstrap/`** — `0-enable-wsl.ps1`, `install.sh`, `CLAUDE.md`, `litellm-config.yaml`,
-   `.env.example`, `replication-engine/`, `90-DAY-PLAN.md`.
-5. **Write top-level `README.md`** — overview + exact first 5 commands.
+1. ✅ `00-MASTER-BLUEPRINT.md` — full 13-part merged report (reality-check first).
+2. ✅ `company-os/` core — `_INDEX`, `00-architecture`, `12-company-brain`, `13-model-router`.
+3. ✅ `company-os/` division files — all 11 (`01-executive` … `11-finance-token-optimizer`), each on the
+   `00-architecture.md` §3 role-spec schema.
+4. ✅ `bootstrap/` — `0-enable-wsl.ps1`, `install.sh`, `CLAUDE.md`, `litellm-config.yaml`, `.env.example`,
+   `replication-engine/` (runnable, demo-verified), `90-DAY-PLAN.md`.
+5. ✅ top-level `README.md` — overview + quick start.
+
+**Next phase = EXECUTION (Phase 0).** See `bootstrap/90-DAY-PLAN.md` and §7 below. This is no longer
+authoring — it requires running things in WSL2/Ubuntu with real API keys.
 
 ---
 

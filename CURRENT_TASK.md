@@ -5,55 +5,45 @@
 > **Last updated:** 2026-06-04
 
 ## Active phase
-**Authoring the deliverables** (the blueprint document + the runnable bootstrap kit) into
-`C:\Users\Ayush\OneDrive\Desktop\GOD\`.
+✅ **AUTHORING COMPLETE.** The full deliverable — `00-MASTER-BLUEPRINT.md`, the `company-os/` operating
+system (15 files), and the runnable `bootstrap/` kit — is written, committed, and pushed to
+https://github.com/ayush-syst/godmode-ai-company.
 
-## Right now
-**BUILD phase — Task #2 (company-os/ core) COMPLETE & pushed.** Authored the four core specs:
-`company-os/_INDEX.md`, `00-architecture.md` (3-layer model + Task Contract + the role-spec schema every
-division file must follow + conflict-resolution ladder + gate definitions), `12-company-brain.md` (4-store
-memory, write/read policy, doc schemas), `13-model-router.md` (difficulty→model routing, fallback chains,
-quota rotation, caching, budget guards).
+⏭️ **Next phase = EXECUTION (Phase 0).** This is no longer authoring; it's running the system in
+WSL2/Ubuntu with real API keys, per `bootstrap/90-DAY-PLAN.md`. **Nothing in the execution phase has
+started yet.**
 
-## Right now
-**BUILD phase — Tasks #2 & #3 (full company-os/) COMPLETE & pushed.**
+## What's done (all pushed)
+- ✅ `00-MASTER-BLUEPRINT.md` — 13 parts + reality check
+- ✅ `README.md` + `LICENSE` (MIT) + `.gitignore` + 3 handoff files
+- ✅ `company-os/` — `_INDEX`, `00-architecture`, `12-company-brain`, `13-model-router` + 11 division files
+- ✅ `bootstrap/` — `0-enable-wsl.ps1`, `install.sh`, `CLAUDE.md`, `litellm-config.yaml`, `.env.example`
+- ✅ `bootstrap/replication-engine/` — `run.py`, `crew.py`, `rubric.py`, `sample_candidates.json`,
+  `requirements.txt`, `README.md` — **`python run.py --demo` verified working** (ranks the sample set;
+  CreatorKit 81/95 → HealthLog 49/95)
+- ✅ `bootstrap/90-DAY-PLAN.md` — the Phase-0 execution checklist
 
-`company-os/` is fully authored (15 files total):
-- Core: `_INDEX`, `00-architecture`, `12-company-brain`, `13-model-router`
-- Divisions: `01-executive` through `11-finance-token-optimizer` (all 11, all following the §3 schema)
+## The immediate next action (Phase 0, Week 1)
+Run the stack stand-up on the user's machine. In order:
+1. `bootstrap/0-enable-wsl.ps1` (elevated PowerShell) → reboot → finish Ubuntu setup
+2. In Ubuntu: `bash bootstrap/install.sh`
+3. `cp bootstrap/.env.example .env` → fill `ANTHROPIC_API_KEY` + 1 free key (Gemini/Groq)
+4. `litellm --config bootstrap/litellm-config.yaml` (start the Token Optimizer)
+5. Smoke tests: `python bootstrap/replication-engine/run.py --demo` (swarm path) + a gstack `/office-hours` (gate path)
 
-**Task #4 (`bootstrap/` scripts + configs) COMPLETE & pushed** — built on Opus 4.8:
-- `0-enable-wsl.ps1` (self-elevating WSL2+Ubuntu enabler; guides Docker Desktop)
-- `install.sh` (idempotent Ubuntu installer: Claude Code, gstack, ruflo, CrewAI, LiteLLM, scanners, Playwright; `--minimal` flag)
-- `litellm-config.yaml` (full router implementing `13-model-router`: task-class aliases, fallback chains, gate-no-downgrade rule, semantic cache, Langfuse, budget fence)
-- `.env.example` (every key as a placeholder; verified NOT git-ignored, no real `.env` present)
-- `CLAUDE.md` (operating instructions for Claude Code as the Layer-1 driver)
+See `bootstrap/90-DAY-PLAN.md` for the full week-by-week plan.
 
-⏭️ **NEXT: Task #5 — `bootstrap/replication-engine/` + `bootstrap/90-DAY-PLAN.md`.**
-The replication engine = a runnable CrewAI Python workflow implementing blueprint Part 8 (clone-a-US-
-startup-for-India): source candidates → score the 8-dim rubric → India-fit analysis → ranked shortlist +
-build brief. Files: `run.py`, `crew.py`/`agents.py`/`tasks.py`, `rubric.py`, `requirements.txt`, `README.md`.
-Then `90-DAY-PLAN.md` (the Phase-0 execution checklist). Stay on Opus 4.8 (real Python).
-
-Git remote `origin` is already set and credentials are cached.
-
-## Build order
-1. ✅ `00-MASTER-BLUEPRINT.md`
-2. ✅ `company-os/` core (4 files)
-3. ✅ `company-os/` division files (11 files)
-4. ✅ `bootstrap/` scripts + configs (Task #4)
-5. ⬜ `bootstrap/replication-engine/` + `bootstrap/90-DAY-PLAN.md` (Task #5)
-6. ✅ top-level `README.md`
-
-## Task IDs (in the session task list)
-- #1 Master blueprint
-- #2 company-os core files
-- #3 company-os division files
-- #4 bootstrap install + config
-(Replication engine, 90-day plan, and README are folded into the build order above; add tasks if resuming.)
+## ⚠️ Decision point for the user (before execution)
+The execution phase is **interactive and machine-specific** (installs software, reboots, needs your API
+keys, runs in your Ubuntu). A few things to know:
+- It may be better done **hands-on by you** following `90-DAY-PLAN.md`, with Claude assisting per-step,
+  rather than fully agent-driven.
+- It needs **real keys** (never committed) and a **WSL2 reboot**.
+- Consider whether to **start a fresh chat** here (authoring context is large; execution is a clean phase
+  that resumes cleanly from `PROJECT_CONTEXT.md`).
 
 ## Notes for whoever continues
-- Update the file-status table in `PROJECT_CONTEXT.md` §1 as files get created.
-- After a meaningful chunk is done (a "milestone"), refresh all three handoff files and offer the user a
-  fresh chat.
-- Give the model-escalation heads-up before each big/difficult chunk.
+- Authoring is done — do not re-author. If extending, keep `company-os/` files on the `00-architecture.md`
+  §3 schema and keep everything consistent with the blueprint.
+- Keep maintaining the 3 handoff files at every milestone; never commit secrets (public MIT repo).
+- Model-escalation: Opus for architecture/security/hard code; Sonnet/Haiku for routine/bulk.

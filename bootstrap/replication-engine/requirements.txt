@@ -1,0 +1,11 @@
+# Startup Replication Engine — dependencies
+# Live mode (the crew) needs crewai + litellm. Demo mode (--demo) needs only
+# the stdlib + (optionally) python-dotenv. Versions are floors; re-verify against
+# the current CrewAI/LiteLLM releases (their APIs move fast — see README).
+
+crewai[tools]>=0.80.0      # multi-agent crews + SerperDevTool (optional web search)
+litellm>=1.50.0            # talks to the LiteLLM proxy / builds the build brief
+python-dotenv>=1.0.0       # loads the repo-root .env (optional but recommended)
+
+# Optional, only if you wire live web search into the scout agent:
+#   set SERPER_API_KEY in .env  -> SerperDevTool activates automatically
