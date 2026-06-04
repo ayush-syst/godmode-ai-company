@@ -22,17 +22,18 @@ quota rotation, caching, budget guards).
 - Core: `_INDEX`, `00-architecture`, `12-company-brain`, `13-model-router`
 - Divisions: `01-executive` through `11-finance-token-optimizer` (all 11, all following the §3 schema)
 
-⏭️ **NEXT: Task #4 — the `bootstrap/` kit.** This is the *runnable* half of the project:
-- `0-enable-wsl.ps1` — PowerShell script to enable WSL2 + Docker Desktop
-- `install.sh` — Ubuntu install script (Claude Code, gstack, ruflo, OpenHands, CrewAI, n8n, scanners)
-- `CLAUDE.md` — gstack project configuration for Claude Code
-- `litellm-config.yaml` — the Token Optimizer router config (implements `13-model-router`)
-- `.env.example` — template for all API keys (never committed with real values)
-And then Task #5: `bootstrap/replication-engine/` (CrewAI Python + run.py) + `bootstrap/90-DAY-PLAN.md`.
+**Task #4 (`bootstrap/` scripts + configs) COMPLETE & pushed** — built on Opus 4.8:
+- `0-enable-wsl.ps1` (self-elevating WSL2+Ubuntu enabler; guides Docker Desktop)
+- `install.sh` (idempotent Ubuntu installer: Claude Code, gstack, ruflo, CrewAI, LiteLLM, scanners, Playwright; `--minimal` flag)
+- `litellm-config.yaml` (full router implementing `13-model-router`: task-class aliases, fallback chains, gate-no-downgrade rule, semantic cache, Langfuse, budget fence)
+- `.env.example` (every key as a placeholder; verified NOT git-ignored, no real `.env` present)
+- `CLAUDE.md` (operating instructions for Claude Code as the Layer-1 driver)
 
-**MODEL ESCALATION NOTE:** Tasks #4–5 involve real code (bash scripts, Python/CrewAI, YAML config,
-security-sensitive .env patterns) → **recommend switching back to Opus 4.8** before starting them.
-Flag the user before Task #4 begins.
+⏭️ **NEXT: Task #5 — `bootstrap/replication-engine/` + `bootstrap/90-DAY-PLAN.md`.**
+The replication engine = a runnable CrewAI Python workflow implementing blueprint Part 8 (clone-a-US-
+startup-for-India): source candidates → score the 8-dim rubric → India-fit analysis → ranked shortlist +
+build brief. Files: `run.py`, `crew.py`/`agents.py`/`tasks.py`, `rubric.py`, `requirements.txt`, `README.md`.
+Then `90-DAY-PLAN.md` (the Phase-0 execution checklist). Stay on Opus 4.8 (real Python).
 
 Git remote `origin` is already set and credentials are cached.
 
@@ -40,7 +41,7 @@ Git remote `origin` is already set and credentials are cached.
 1. ✅ `00-MASTER-BLUEPRINT.md`
 2. ✅ `company-os/` core (4 files)
 3. ✅ `company-os/` division files (11 files)
-4. ⬜ `bootstrap/` scripts + configs (Task #4)
+4. ✅ `bootstrap/` scripts + configs (Task #4)
 5. ⬜ `bootstrap/replication-engine/` + `bootstrap/90-DAY-PLAN.md` (Task #5)
 6. ✅ top-level `README.md`
 

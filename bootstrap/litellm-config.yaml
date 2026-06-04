@@ -1,0 +1,178 @@
+# =============================================================================
+# litellm-config.yaml — The Token-Credit Optimizer
+# -----------------------------------------------------------------------------
+# Implements company-os/13-model-router.md as a runnable LiteLLM proxy config.
+# One OpenAI-compatible endpoint in front of every model; routes each task to
+# the cheapest capable model; Claude is reserved for Layer-1 gates.
+#
+# Start:   litellm --config bootstrap/litellm-config.yaml
+# Use:     point gstack / ruflo / CrewAI / OpenHands at  http://localhost:4000
+#          (set OPENAI_API_BASE=http://localhost:4000 and OPENAI_API_KEY=$LITELLM_MASTER_KEY)
+#
+# All credentials come from environment variables (see bootstrap/.env.example).
+# NEVER put real keys in this file — it is committed to a public repo.
+#
+# HONESTY NOTE: model IDs and free-tier names are accurate as of June 2026 but
+# change often. If the proxy rejects a model, check the provider's current model
+# string and update the `model:` line. Re-verify free-tier limits per provider.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# MODEL LIST — aliases map task classes (left) to real provider models (right).
+# Aliases match the routing table in company-os/13-model-router.md §3.
+# -----------------------------------------------------------------------------
+model_list:
+
+  # ── PREMIUM — critical path / gates (Claude on your $20 sub) ──────────────
+  - model_name: claude-gate            # Layer-1 gates: /office-hours /review /cso /qa /ship ...
+    litellm_params:
+      model: anthropic/claude-opus-4-8
+      api_key: os.environ/ANTHROPIC_API_KEY
+      # Prompt caching keeps repeated system prompts / long stable context cheap.
+      cache_control_injection_points:
+        - location: message
+          role: system
+    model_info:
+      mode: chat
+      tier: premium
+
+  - model_name: claude-gate-light      # lighter gates / bulk reasoning that still wants Claude
+    litellm_params:
+      model: anthropic/claude-sonnet-4-6
+      api_key: os.environ/ANTHROPIC_API_KEY
+    model_info:
+      tier: premium
+
+  - model_name: gemini-pro             # MANUAL escalation target (not an automatic gate fallback)
+    litellm_params:
+      model: gemini/gemini-2.5-pro
+      api_key: os.environ/GEMINI_API_KEY
+    model_info:
+      tier: premium
+
+  # ── CHEAP — bulk reasoning / coding workers (low PAYG) ────────────────────
+  - model_name: bulk-code              # routine code, tests, refactors (Layer 2)
+    litellm_params:
+      model: deepseek/deepseek-coder
+      api_key: os.environ/DEEPSEEK_API_KEY
+    model_info:
+      tier: cheap
+
+  - model_name: bulk-code-alt          # coding fallback (Qwen via OpenRouter)
+    litellm_params:
+      model: openrouter/qwen/qwen-2.5-coder-32b-instruct
+      api_key: os.environ/OPENROUTER_API_KEY
+    model_info:
+      tier: cheap
+
+  # ── FREE — high-volume swarm / research / drafts (rate-limited) ───────────
+  - model_name: research-free          # research, summarization, scraping triage (1M ctx)
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+    model_info:
+      tier: free
+
+  - model_name: fast-free              # fast cheap inference (Groq 70B)
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+    model_info:
+      tier: free
+
+  - model_name: throughput-free        # highest free throughput (Cerebras)
+    litellm_params:
+      model: cerebras/llama-3.3-70b
+      api_key: os.environ/CEREBRAS_API_KEY
+    model_info:
+      tier: free
+
+  - model_name: glue                   # classification / cheap glue (Groq 8B)
+    litellm_params:
+      model: groq/llama-3.1-8b-instant
+      api_key: os.environ/GROQ_API_KEY
+    model_info:
+      tier: free
+
+  - model_name: local                  # final safety net — unlimited, your hardware
+    litellm_params:
+      model: ollama/llama3.2
+      api_base: os.environ/OLLAMA_API_BASE   # default http://localhost:11434
+    model_info:
+      tier: local
+
+  # ── EMBEDDINGS — memory / semantic cache (local, free) ────────────────────
+  - model_name: embeddings
+    litellm_params:
+      model: ollama/nomic-embed-text
+      api_base: os.environ/OLLAMA_API_BASE
+    model_info:
+      mode: embedding
+      tier: local
+
+# -----------------------------------------------------------------------------
+# ROUTER SETTINGS — fallback chains (company-os/13-model-router.md §5).
+# On rate-limit / error / quota-exhaustion the router walks the chain.
+# -----------------------------------------------------------------------------
+router_settings:
+  routing_strategy: simple-shuffle
+  num_retries: 3
+  timeout: 120
+  allowed_fails: 2
+  cooldown_time: 60          # seconds a model sits out after repeated failures
+
+  fallbacks:
+    # research chain:  flash -> cerebras -> groq70b -> deepseek
+    - research-free: [throughput-free, fast-free, bulk-code]
+    # bulk-code chain: deepseek -> qwen -> groq -> flash
+    - bulk-code: [bulk-code-alt, fast-free, research-free]
+    # glue chain:      groq8b -> local
+    - glue: [local]
+    # NOTE: `claude-gate` intentionally has NO automatic fallback.
+    # Per 13-model-router.md §3 (gate exception), gates must NOT silently
+    # downgrade to a weaker model. If Claude is unavailable the call fails and
+    # the human escalates (optionally re-routing to `gemini-pro` MANUALLY).
+
+  context_window_fallbacks:
+    # if a request overflows a model's context, jump to a long-context model
+    - bulk-code: [research-free]        # Gemini Flash = 1M context
+    - fast-free: [research-free]
+
+# -----------------------------------------------------------------------------
+# LITELLM SETTINGS — caching, observability, global budget.
+# -----------------------------------------------------------------------------
+litellm_settings:
+  drop_params: true                     # tolerate provider-specific param differences
+  set_verbose: false
+
+  # Cost observability -> powers the Founder Dashboard token panel + finance reports
+  success_callback: ["langfuse"]
+  failure_callback: ["langfuse"]
+
+  # Semantic + prompt caching (the cheapest token is the one you don't spend).
+  cache: true
+  cache_params:
+    type: redis-semantic
+    host: os.environ/REDIS_HOST         # default localhost
+    port: os.environ/REDIS_PORT         # default 6379
+    password: os.environ/REDIS_PASSWORD
+    similarity_threshold: 0.90          # near-duplicate swarm requests hit cache
+    redis_semantic_cache_embedding_model: embeddings
+    ttl: 86400                          # 24h
+
+  # Premium-budget fence: a runaway loop can't drain the $20 sub in an afternoon.
+  # (company-os/11-finance-token-optimizer.md §6 — recalibrate monthly via Langfuse.)
+  max_budget: 15.0                      # USD/month across all keys
+  budget_duration: 30d
+
+# -----------------------------------------------------------------------------
+# GENERAL SETTINGS — auth + persistence for budgets/usage.
+# -----------------------------------------------------------------------------
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY   # clients authenticate with this
+  database_url: os.environ/DATABASE_URL       # optional: Postgres for key budgets/usage
+  # Per-virtual-key budgets are created against the master key at runtime, e.g.:
+  #   curl -X POST localhost:4000/key/generate \
+  #     -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
+  #     -d '{"models":["bulk-code","research-free"],"max_budget":5.0,"duration":"30d"}'
+  # Give each division its own key so cost is attributable (11-finance §5).
