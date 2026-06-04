@@ -38,6 +38,8 @@ case. We do not over-promise full autonomy or "unhackable" security.
 | `PROJECT_CONTEXT.md` | This file — permanent knowledge | ✅ created |
 | `CURRENT_TASK.md` | What we're doing right now | ✅ created |
 | `NEXT_STEPS.md` | Ordered future tasks | ✅ created |
+| `LICENSE` | MIT license (open source) | ✅ created |
+| `.gitignore` | Excludes secrets/env/local settings | ✅ created |
 | `00-MASTER-BLUEPRINT.md` | Full 13-part merged report | ⬜ to write |
 | `README.md` | Overview + first 5 commands | ⬜ to write |
 | `company-os/` | Obsidian-ready vault (divisions/roles) | ⬜ to write |
@@ -229,8 +231,10 @@ paid/self-hosted there. "Free keys forever, no limits" is a fantasy.
   every milestone so the user can **start a fresh chat from `PROJECT_CONTEXT.md`** instead of carrying
   500k tokens of history (~10–20k-token summary is far cheaper). The user typically switches conversations
   at **~50% context-quota used** — proactively refresh and offer a handoff as that approaches.
-- **GitHub repo:** The project is kept in a proper git/GitHub repo (**private** by default). Commit at
-  milestones with clear messages; `.env`/secrets and `.claude/` local settings are git-ignored.
+- **GitHub repo (OPEN SOURCE / PUBLIC):** Public, **MIT-licensed** open-source project at
+  https://github.com/ayush-syst/godmode-ai-company. Commit at milestones with clear messages. **No secrets
+  are ever committed** — `.env`/keys and `.claude/` local settings are git-ignored (critical now that the
+  repo is public). Build the project so others can clone, understand, and fork it (clear README + license).
 - **Model-escalation protocol:** **Before starting anything big or difficult, tell the user first and
   recommend which model to use**, then let them switch before you proceed. Opus 4.8 is already the most
   capable model → recommend staying on it (optionally `/fast` off for max deliberation) for
