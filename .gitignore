@@ -1,0 +1,57 @@
+# ─── Secrets / environment (NEVER commit) ───────────────────────────
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.key
+*.pem
+*.p12
+secrets/
+**/secrets/
+
+# ─── Node / Bun ─────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-store/
+bun.lockb
+
+# ─── Python ─────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.ipynb_checkpoints/
+
+# ─── Claude Code local (machine-specific) ───────────────────────────
+.claude/settings.local.json
+
+# ─── OS noise ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Editors / Obsidian cache ───────────────────────────────────────
+.idea/
+.vscode/
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+
+# ─── Logs / local data stores ───────────────────────────────────────
+*.log
+logs/
+data/
+*.sqlite
+*.sqlite3
+*.db
+
+# ─── Build output ───────────────────────────────────────────────────
+dist/
+build/
+.next/
+out/
+.turbo/
