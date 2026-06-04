@@ -41,7 +41,7 @@ case. We do not over-promise full autonomy or "unhackable" security.
 | `LICENSE` | MIT license (open source) | ✅ created |
 | `.gitignore` | Excludes secrets/env/local settings | ✅ created |
 | `00-MASTER-BLUEPRINT.md` | Full 13-part merged report | ✅ created |
-| `README.md` | Overview + first 5 commands | ⬜ to write |
+| `README.md` | Open-source front door + quick start | ✅ created |
 | `company-os/` | Obsidian-ready vault (divisions/roles) | ⬜ to write |
 | `bootstrap/` | Runnable install + config + replication engine | ⬜ to write |
 
