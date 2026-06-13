@@ -5,49 +5,58 @@
 > **Last updated:** 2026-06-13
 
 ## Active phase
-✅ **PHASE 0 WEEK 1 COMPLETE.** Stack is live on WSL2/Ubuntu. All smoke tests passed.
+✅ **PHASE 0 WEEK 1 COMPLETE** — stack live on WSL2/Ubuntu.
+✅ **WEEK 2 COMPLETE** — Replication Engine run live; **first product chosen.**
 
-⏭️ **NOW: Week 2 — run the Replication Engine live → pick ONE product.**
+🏁 **DECISION (2026-06-13): GOD's first product = GST Bill Assistant** — not the engine's pick.
+See the Decision Record: `brain/decisions/2026-06-13-first-product-gst-bill-assistant.md`.
+
+⏭️ **NOW: Week 3 — drive GST Bill Assistant from ~6/10 to a paying CA firm.**
+Plan: `products/gst-bill-assistant/LAUNCH-PLAN.md`. Start with **Phase A** (firsthand code read +
+harden GSTR-2B reconciliation).
 
 ---
 
-## Week 1 — DONE ✅ (2026-06-13)
-- ✅ WSL2 + Ubuntu 26.04 installed and running
-- ✅ Claude Code 2.1.172 installed + authenticated (2389ayush@gmail.com, Claude Pro)
-- ✅ gstack v1.57.10 installed at `~/.claude/skills/gstack/`; `/office-hours` verified working
-- ✅ LiteLLM proxy running on `:4000` — use `bootstrap/litellm-config-simple.yaml`
-- ✅ Replication Engine demo smoke test passed (CreatorKit 81/95 wins)
-- ✅ Gemini API key added to `.env` (GEMINI_API_KEY)
-- ✅ Milestone committed + pushed to GitHub
+## What happened in Week 2 (DONE ✅)
+- Started LiteLLM proxy (`litellm-config-simple.yaml`) and ran the **Replication Engine live**
+  (Gemini via the proxy) on "clone a US startup for India". Shortlist:
+  Calendly 76 · Punchh 76 · **BillKaro (Invoice Simple) 75** · Thumbtack 68 · Skillshare 68 · Fat Llama 48.
+  (Preserved in `brain/research/2026-06-13-replication-engine-shortlist.md`.)
+- Fixed a brief-generator bug in `crew.py` (the `litellm.completion` model needed the `openai/`
+  prefix to route via the proxy); regenerated the top-3 build briefs.
+- Ran a CEO interrogation (office-hours equivalent) on the top pick, **BillKaro**. It flagged a
+  competition graveyard (Vyapar/Khatabook/Zoho/Tally) and a weak "why you".
+- **Founder surfaced an existing mature product — GST Bill Assistant** (GSTR-2B reconciliation for
+  CA firms, ~v3.7.0, AGPL-3.0). Its launch-blockers map 1:1 onto the layers GOD provides, and it's
+  the fastest path to revenue → **chosen as the first product.** BillKaro demoted to backlog/feeder.
 
-## Critical operational notes (for fresh chat)
-- **LiteLLM start command:** `cd /mnt/c/Users/Ayush/OneDrive/Desktop/GOD && source .venv/bin/activate && unset DATABASE_URL && litellm --config bootstrap/litellm-config-simple.yaml`
-- **Why `litellm-config-simple.yaml`:** The full config requires Redis + Langfuse (not set up yet). Simple config has no external deps.
-- **Why `unset DATABASE_URL`:** `.env` had DATABASE_URL set which triggered Prisma (not needed). It's now commented out in `.env`.
-- **Python venv:** `.venv` in project root, built with Python 3.11 (system Python 3.14 is too new for litellm deps).
-- **gstack skills location:** `~/.claude/skills/gstack/` (symlinked from `~/.gstack`)
-- **Playwright/QA:** Not working (Ubuntu 26.04 not yet supported). All other gstack skills work fine.
+## The first product (context for a fresh chat)
+- **GST Bill Assistant** — browser-only, local-first GSTR-2B reconciliation + purchase-bill review
+  desk for Indian CA firms. **Its own repo:** https://github.com/ayush-syst/gst-bill-assistant
+  (AGPL-3.0, separate from GOD's MIT). Handoff docs live in that repo under `docs/`.
+- GOD operates on it as the company OS. Operating workspace: `products/gst-bill-assistant/`
+  (operating docs only — **never copy GBA's AGPL code into this MIT repo**).
+- Founder's own rating: *8.5/10 MVP, ~6/10 launch-ready — gap is architectural.*
+  Four blockers: (1) localStorage-only/no team, (2) browser AI key/can't bill, (3) 2B accuracy
+  must be bulletproof, (4) DPDP security posture.
 
-## The immediate next action (Week 2)
+## The immediate next action (Week 3, Phase A)
+1. Read the actual GBA repo — `assets/js/core.mjs`, the 4-pass reconcile cascade, the 32 tests —
+   and write a **firsthand** gap-to-launch assessment (current plan is secondhand).
+2. Build a real-world-messy reconciliation fixture set; harden accuracy + match-confidence.
+3. Gate it: `/review` + `/qa` + `npm test`. Then proceed to Phase B (backend + metered AI).
+4. **In parallel from Day 1:** start recruiting 3–5 small CA-firm design partners (GTM thread).
 
-Run the Replication Engine **live** (LiteLLM must be running in another terminal first):
-
-```bash
-cd /mnt/c/Users/Ayush/OneDrive/Desktop/GOD
-source .venv/bin/activate
-pip install -r bootstrap/replication-engine/requirements.txt -q
-python bootstrap/replication-engine/run.py "clone a US startup for India"
-```
-
-Then:
-1. Review `bootstrap/replication-engine/out/<timestamp>/shortlist.md`
-2. Open Claude Code → run `/office-hours` on the top candidate
-3. **DECIDE** — pick the product. Write Decision Record to `brain/decisions/`.
-4. Create `products/<name>/` repo, copy `bootstrap/CLAUDE.md` into it.
-5. Commit + push. Refresh handoff files.
+## Critical operational notes (carried from Week 1)
+- **LiteLLM start:** `cd /mnt/c/Users/Ayush/OneDrive/Desktop/GOD && source .venv/bin/activate && unset DATABASE_URL && set -a && source .env && set +a && litellm --config bootstrap/litellm-config-simple.yaml`
+  (the proxy must be running in another terminal before the engine / metered AI calls).
+- **Why `-simple` config:** full config needs Redis + Langfuse (not set up yet); simple has no external deps.
+- **Python venv:** `.venv` in project root (Python 3.11; system 3.14 is too new for litellm deps).
+- **`crew.py` proxy calls** need the `openai/<alias>` model prefix (fixed this week).
+- **Playwright/QA:** not yet working on Ubuntu 26.04 — may affect `/qa`. All other gstack skills work.
 
 ## Notes for whoever continues
-- Week 1 is fully done — do not redo anything from it.
-- Sonnet 4.6 is fine for Week 2 (running engine + decision). Switch to Opus for Week 3+ (architecture/security).
-- Never commit `.env` — it has real API keys. It is gitignored.
-- Public MIT repo — keep it clean.
+- Weeks 1–2 are fully done — do not redo them.
+- **Stay on Opus 4.8** for Week 3 (reconciliation logic, backend, security architecture are the
+  hard/important work). Use cheap tiers only for bulk (fixtures, routine refactors).
+- Never commit `.env` (real API keys; gitignored). GOD is public MIT; GBA is public AGPL-3.0 — keep them separate.

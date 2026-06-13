@@ -4,7 +4,7 @@
 > top-to-bottom and you have everything needed to continue without the prior conversation history.
 > Keep this file updated at every milestone. Companion files: `CURRENT_TASK.md` (what's happening now),
 > `NEXT_STEPS.md` (future work).
-> **Last updated:** 2026-06-04
+> **Last updated:** 2026-06-13
 
 ---
 
@@ -15,7 +15,9 @@ that can discover/validate ideas, build products, design world-class UIs, market
 scale, and optimize its own token/credit spend. Philosophy: **assemble the best existing open-source
 repos, don't build from scratch.** Deliverable = a **master blueprint document + a runnable bootstrap
 kit**. **AUTHORING IS COMPLETE** (blueprint + `company-os/` specs + `bootstrap/` kit, all committed &
-pushed). Next phase = **execution**: stand up the stack and ship the first product (`bootstrap/90-DAY-PLAN.md`).
+pushed). Execution is **underway**: Phase-0 Weeks 1–2 are done — the stack is live and the **first
+product is chosen: GST Bill Assistant** (see §2 decision #6). Now driving it to launch
+(`products/gst-bill-assistant/LAUNCH-PLAN.md`).
 
 **Honesty mandate (core to this project):** We build the *realistic* strong version — a semi-autonomous,
 human-gated AI product studio that lets one person operate like a 20–50 person company, targeting
@@ -26,9 +28,9 @@ case. We do not over-promise full autonomy or "unhackable" security.
 
 ## 1. Current project state
 
-- **Phase:** ✅ **Authoring COMPLETE.** All deliverables written, committed & pushed. The replication
-  engine's deterministic path is **verified** (`python run.py --demo` ranks the sample set correctly).
-  Next phase = execution (Phase 0 / the 90-day plan) — not yet started.
+- **Phase:** ✅ Authoring complete. ✅ **Phase-0 Week 1** (stack live on WSL2/Ubuntu) and ✅ **Week 2**
+  (Replication Engine run live; **first product chosen**) are done. **Now: Week 3** — drive the first
+  product (GST Bill Assistant) toward a paying CA firm. Live status in `CURRENT_TASK.md`.
 - **Working directory / project root:** `C:\Users\Ayush\OneDrive\Desktop\GOD\`
 - **OS / shell:** Windows 11 Home, PowerShell. **Target runtime for the agent stack = WSL2 / Ubuntu.**
 - **Git:** ✅ Active repo; remote `origin` → https://github.com/ayush-syst/godmode-ai-company (public, MIT).
@@ -51,6 +53,8 @@ case. We do not over-promise full autonomy or "unhackable" security.
 | `bootstrap/` (scripts+config) | `0-enable-wsl.ps1`, `install.sh`, `CLAUDE.md`, `litellm-config.yaml`, `.env.example` | ✅ created |
 | `bootstrap/replication-engine/` | `run.py`, `crew.py`, `rubric.py`, `sample_candidates.json`, `requirements.txt`, `README.md` | ✅ created (demo verified) |
 | `bootstrap/90-DAY-PLAN.md` | Phase-0 execution checklist | ✅ created |
+| `brain/` (Company Brain) | `decisions/` (DEC-2026-0001) + `research/` (engine shortlist) — the vault's first entries | ✅ seeded |
+| `products/gst-bill-assistant/` | First product's operating workspace (CLAUDE.md, README, LAUNCH-PLAN) — code lives in its own repo | ✅ created |
 
 > When you create/finish any of these, update the table.
 
@@ -71,6 +75,12 @@ case. We do not over-promise full autonomy or "unhackable" security.
    enables WSL2 + Docker Desktop integration.
 5. **Tone/standard:** Architect, not hype man. Brutal reality check is Part 13 of the blueprint and frames
    the whole thing. Quality bar is "the ultimate project" — no compromise on depth/accuracy.
+6. **First product = GST Bill Assistant** (decided 2026-06-13; Decision Record:
+   `brain/decisions/2026-06-13-first-product-gst-bill-assistant.md`). The Replication Engine ran live and
+   its top *greenfield* pick was BillKaro (GST invoicing for MSMEs), but the founder already had a mature,
+   near-launch GSTR-2B reconciliation product for CA firms (own repo, AGPL-3.0). Its launch-blockers map
+   1:1 onto the layers GOD provides → fastest path to revenue. BillKaro demoted to a backlog/feeder idea.
+   The engine is reframed as a *portfolio-discovery* tool for future products, not the sole source of the first.
 
 ---
 
@@ -216,9 +226,10 @@ authoring — it requires running things in WSL2/Ubuntu with real API keys.
 
 ## 7. Future roadmap (post-authoring)
 
-- **90-Day Phase 0 (ship something real):** (1) Stand up WSL2 + Layers 0/1 via bootstrap. (2) **Run the
-  Startup Replication Engine** to pick the product. (3) Build that MVP with gstack on Claude → security
-  scan → deploy. (4) Get first users/$ before expanding the swarm.
+- **90-Day Phase 0 (ship something real):** (1) ✅ Stand up WSL2 + Layers 0/1 via bootstrap. (2) ✅ **Run the
+  Startup Replication Engine** — but the chosen first product is the founder's existing **GST Bill Assistant**,
+  not the engine's pick (§2 #6). (3) ⏭️ Take that product to launch with gstack on Claude → security scan →
+  deploy (`products/gst-bill-assistant/LAUNCH-PLAN.md`). (4) Get first users/$ before expanding the swarm.
 - **5-Year skeleton:** Y1 one profitable product + the core system; Y2 productize the factory across 2–3
   products; Y3 scale infra + paid model tier + first contractor/human; Y4–5 portfolio/platform;
   billion-dollar swing only if a product earns it.

@@ -2,7 +2,7 @@
 
 > The forward queue. Permanent knowledge lives in `PROJECT_CONTEXT.md`; the active step in
 > `CURRENT_TASK.md`.
-> **Last updated:** 2026-06-04
+> **Last updated:** 2026-06-13
 
 ## A. Finish authoring — ✅ COMPLETE (all pushed)
 - [x] `00-MASTER-BLUEPRINT.md` (13 parts)
@@ -22,16 +22,21 @@
 - [x] gstack installed + `/office-hours` working
 - [x] LiteLLM proxy running on :4000 (`litellm-config-simple.yaml`; DATABASE_URL commented out in .env)
 - [x] Replication Engine demo verified (CreatorKit 81/95)
-- [ ] Add free API key (Gemini or Groq) to `.env` → run engine live
+- [x] Add free API key (Gemini) to `.env` → run engine live (Week 2, 2026-06-13)
 - [ ] Install Docker Desktop + enable WSL integration (needed for OpenHands/n8n later)
 
-## C. Pick & build the first product
-- [ ] Run the **Startup Replication Engine** → get ranked US-startup-for-India shortlist + build brief
-- [ ] Founder picks the winner
-- [ ] gstack flow: `/office-hours` → plan reviews → `/design-shotgun` → build (swarm assists) → `/review`
-      → `/cso` (security) → `/qa` → `/ship` → deploy (Coolify/Vercel) → `/retro`
-- [ ] Wire basic analytics + Uptime-Kuma + Sentry
-- [ ] Get first users / first dollar
+## C. Pick & build the first product — ✅ PICKED (2026-06-13)
+- [x] Run the **Startup Replication Engine** live → ranked shortlist + build briefs
+      (`brain/research/2026-06-13-replication-engine-shortlist.md`)
+- [x] Founder picks the winner → **GST Bill Assistant** (own repo, AGPL-3.0), *not* the engine's
+      greenfield pick (BillKaro, now a backlog/feeder idea).
+      Decision Record: `brain/decisions/2026-06-13-first-product-gst-bill-assistant.md`
+- [ ] **Drive it to launch** — `products/gst-bill-assistant/LAUNCH-PLAN.md`:
+      - [ ] Phase A: firsthand code read + harden GSTR-2B reconciliation (`/review`, `/qa`, `npm test`)
+      - [ ] Phase B: backend + metered AI via the proxy; opt-in cloud sync/team accounts (`/plan-eng-review`)
+      - [ ] Phase C: 🔴 DPDP security posture + scan (`/cso` — critical/high block launch)
+      - [ ] Phase D: deploy (`/ship` → `/canary`) + analytics/Uptime-Kuma/Sentry
+- [ ] GTM (parallel, from Day 1): recruit 3–5 small CA-firm design partners → paid pilot → **first dollar**
 
 ## D. Compounding (post-first-product)
 - [ ] Populate the Company Brain (Obsidian + Cognee) with decisions/specs/retros

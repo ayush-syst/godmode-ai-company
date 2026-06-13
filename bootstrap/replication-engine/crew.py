@@ -185,7 +185,7 @@ def generate_build_brief(winner: dict, category: str) -> str:
         "6. First 3 build steps (feeding gstack /office-hours)\n"
     )
     resp = litellm.completion(
-        model="claude-gate-light",
+        model="openai/claude-gate-light",
         api_base=PROXY_BASE,
         api_key=PROXY_KEY,
         messages=[{"role": "system", "content": sys_prompt},
