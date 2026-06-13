@@ -12,8 +12,9 @@
 See the Decision Record: `brain/decisions/2026-06-13-first-product-gst-bill-assistant.md`.
 
 ⏭️ **NOW: Week 3 — drive GST Bill Assistant from ~6/10 to a paying CA firm.**
-Plan: `products/gst-bill-assistant/LAUNCH-PLAN.md`. Start with **Phase A** (firsthand code read +
-harden GSTR-2B reconciliation).
+Plan: `products/gst-bill-assistant/LAUNCH-PLAN.md`. **Phase A underway:** firsthand reconciliation
+assessment done (`products/gst-bill-assistant/PHASE-A-ASSESSMENT.md`); **P0-1 (line-aware tolerance)
+shipped to GST App v3.7.1** (commit `54e1c1c`, 35 tests green).
 
 ---
 
@@ -40,12 +41,18 @@ harden GSTR-2B reconciliation).
   Four blockers: (1) localStorage-only/no team, (2) browser AI key/can't bill, (3) 2B accuracy
   must be bulletproof, (4) DPDP security posture.
 
-## The immediate next action (Week 3, Phase A)
-1. Read the actual GBA repo — `assets/js/core.mjs`, the 4-pass reconcile cascade, the 32 tests —
-   and write a **firsthand** gap-to-launch assessment (current plan is secondhand).
-2. Build a real-world-messy reconciliation fixture set; harden accuracy + match-confidence.
-3. Gate it: `/review` + `/qa` + `npm test`. Then proceed to Phase B (backend + metered AI).
-4. **In parallel from Day 1:** start recruiting 3–5 small CA-firm design partners (GTM thread).
+## The immediate next action (Week 3, Phase A — continued)
+P0-1 (tolerance) is shipped (GST App v3.7.1). Next, per `products/gst-bill-assistant/PHASE-A-ASSESSMENT.md`:
+1. **P0-2 — Wave 14 book-side split consolidation** (`groupBookSplits()` + a `reconcile()` pre-pass;
+   reuse `effectiveTolerance` with the combined line count).
+2. **Inspect the 2B import path** (`app.js` + how a real GST-portal export becomes `rows`) — the
+   "known unknown" to close before calling reconciliation bulletproof.
+3. Then the P1 items (deterministic tier-4 assignment, date disambiguation, ambiguous-fallback flagging).
+4. **In parallel:** recruit 3–5 small CA-firm design partners (GTM thread).
+
+> Code work lives in the GST App repo (`C:\Users\Ayush\OneDrive\Desktop\GST App`, AGPL-3.0). Commit +
+> push from **Windows git** (WSL push hangs — see memory `god-git-push-from-windows-not-wsl`). Pushing
+> to either repo's `main` needs explicit founder authorization each time (Auto Mode gate).
 
 ## Critical operational notes (carried from Week 1)
 - **LiteLLM start:** `cd /mnt/c/Users/Ayush/OneDrive/Desktop/GOD && source .venv/bin/activate && unset DATABASE_URL && set -a && source .env && set +a && litellm --config bootstrap/litellm-config-simple.yaml`
