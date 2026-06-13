@@ -1,0 +1,42 @@
+# litellm-config-simple.yaml — minimal startup config (no Redis, no Langfuse)
+# Use this for Week 1. Switch to litellm-config.yaml once Redis + Langfuse are set up.
+
+model_list:
+
+  - model_name: claude-gate
+    litellm_params:
+      model: anthropic/claude-opus-4-8
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  - model_name: claude-gate-light
+    litellm_params:
+      model: anthropic/claude-sonnet-4-6
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  - model_name: research-free
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+
+  - model_name: fast-free
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+
+  - model_name: glue
+    litellm_params:
+      model: groq/llama-3.1-8b-instant
+      api_key: os.environ/GROQ_API_KEY
+
+router_settings:
+  routing_strategy: simple-shuffle
+  num_retries: 3
+  timeout: 120
+
+litellm_settings:
+  drop_params: true
+  set_verbose: false
+
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
+  disable_prisma_schema_update: true

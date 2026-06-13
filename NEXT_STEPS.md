@@ -16,12 +16,14 @@
 > **➡️ The forward queue now starts at Section B (stand up the system). This is the live next step.**
 - [ ] Milestone checkpoint: refresh handoff docs, offer fresh chat
 
-## B. Stand up the system (Phase 0, after authoring) — runs in WSL2/Ubuntu
-- [ ] Run `bootstrap/0-enable-wsl.ps1` in PowerShell (enable WSL2 + Docker Desktop integration)
-- [ ] In Ubuntu: run `bootstrap/install.sh` (Claude Code + gstack + ruflo + OpenHands + CrewAI + n8n + scanners)
-- [ ] Add API keys to `.env` (Claude sub key; free tiers: Gemini, Groq, Cerebras, DeepSeek, Qwen, OpenRouter)
-- [ ] Start LiteLLM proxy with `litellm-config.yaml`; confirm the Token Optimizer routes + reports cost
-- [ ] Smoke test: a "hello-swarm" ruflo task runs end-to-end on free models; a gstack `/office-hours` runs on Claude
+## B. Stand up the system (Phase 0, after authoring) — ✅ WEEK 1 COMPLETE (2026-06-13)
+- [x] WSL2 + Ubuntu 26.04 installed
+- [x] Claude Code 2.1.172 installed + authenticated
+- [x] gstack installed + `/office-hours` working
+- [x] LiteLLM proxy running on :4000 (`litellm-config-simple.yaml`; DATABASE_URL commented out in .env)
+- [x] Replication Engine demo verified (CreatorKit 81/95)
+- [ ] Add free API key (Gemini or Groq) to `.env` → run engine live
+- [ ] Install Docker Desktop + enable WSL integration (needed for OpenHands/n8n later)
 
 ## C. Pick & build the first product
 - [ ] Run the **Startup Replication Engine** → get ranked US-startup-for-India shortlist + build brief

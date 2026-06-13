@@ -5,13 +5,9 @@
 > **Last updated:** 2026-06-04
 
 ## Active phase
-✅ **AUTHORING COMPLETE.** The full deliverable — `00-MASTER-BLUEPRINT.md`, the `company-os/` operating
-system (15 files), and the runnable `bootstrap/` kit — is written, committed, and pushed to
-https://github.com/ayush-syst/godmode-ai-company.
+✅ **PHASE 0 WEEK 1 COMPLETE** (2026-06-13). Stack is live on WSL2/Ubuntu.
 
-⏭️ **Next phase = EXECUTION (Phase 0).** This is no longer authoring; it's running the system in
-WSL2/Ubuntu with real API keys, per `bootstrap/90-DAY-PLAN.md`. **Nothing in the execution phase has
-started yet.**
+⏭️ **Next = Week 2: Run Replication Engine live → pick ONE product.**
 
 ## What's done (all pushed)
 - ✅ `00-MASTER-BLUEPRINT.md` — 13 parts + reality check
@@ -23,13 +19,20 @@ started yet.**
   CreatorKit 81/95 → HealthLog 49/95)
 - ✅ `bootstrap/90-DAY-PLAN.md` — the Phase-0 execution checklist
 
-## The immediate next action (Phase 0, Week 1)
-Run the stack stand-up on the user's machine. In order:
-1. `bootstrap/0-enable-wsl.ps1` (elevated PowerShell) → reboot → finish Ubuntu setup
-2. In Ubuntu: `bash bootstrap/install.sh`
-3. `cp bootstrap/.env.example .env` → fill `ANTHROPIC_API_KEY` + 1 free key (Gemini/Groq)
-4. `litellm --config bootstrap/litellm-config.yaml` (start the Token Optimizer)
-5. Smoke tests: `python bootstrap/replication-engine/run.py --demo` (swarm path) + a gstack `/office-hours` (gate path)
+## Week 1 — DONE ✅
+- ✅ WSL2 + Ubuntu 26.04
+- ✅ Claude Code 2.1.172 authenticated
+- ✅ gstack installed + `/office-hours` works
+- ✅ LiteLLM proxy running on :4000 (use `bootstrap/litellm-config-simple.yaml` + comment out DATABASE_URL in .env)
+- ✅ Replication Engine demo: CreatorKit 81/95 wins
+
+## The immediate next action (Phase 0, Week 2)
+Get a free Gemini or Groq API key, add it to `.env`, then run the engine live:
+1. Get `GEMINI_API_KEY` free at https://aistudio.google.com or `GROQ_API_KEY` at https://console.groq.com
+2. Add key to `.env`
+3. Start LiteLLM: `unset DATABASE_URL && litellm --config bootstrap/litellm-config-simple.yaml`
+4. Run live: `python bootstrap/replication-engine/run.py "clone a US startup for India"`
+5. Review `out/<ts>/shortlist.md` → run `/office-hours` on the winner → DECIDE
 
 See `bootstrap/90-DAY-PLAN.md` for the full week-by-week plan.
 
