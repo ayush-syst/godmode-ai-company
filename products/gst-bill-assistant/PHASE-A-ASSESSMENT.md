@@ -1,7 +1,7 @@
 # Phase A — Reconciliation Gap Assessment (firsthand)
 
 > Firsthand read of the GST App repo's reconciliation core (`assets/js/core.mjs` + `tests/core.test.mjs`)
-> on 2026-06-13, at GST App HEAD `54e1c1c` (v3.7.1). Baseline: 35/35 tests green (Node v24).
+> on 2026-06-13. GST App HEAD now `7b9cc99` (v3.8.0); both P0 fixes shipped. 39/39 tests green (Node v24).
 > This is the make-or-break layer (founder's own note + NEXT_STEPS). Drives the Phase-A work in
 > [LAUNCH-PLAN.md](LAUNCH-PLAN.md).
 
@@ -23,10 +23,9 @@ focused list below.
 - [x] **P0-1 — flat ₹2 tolerance too rigid.** ✅ DONE (v3.7.1, GST App `54e1c1c`). Replaced with
       `effectiveTolerance(lines) = ₹2 + ₹1·(lines−1)` so consolidated-line rounding no longer causes
       false Mismatches; single-line behavior unchanged. 3 tests added.
-- [ ] **P0-2 — book-side split consolidation (Wave 14).** Many book ledger lines → one 2B row does
-      not reconcile yet (only the 2B side consolidates, Wave 13). Symmetric twin: a pure
-      `groupBookSplits()` + a pre-pass in `reconcile()`. **Must reuse `effectiveTolerance` with the
-      combined line count.**
+- [x] **P0-2 — book-side split consolidation (Wave 14).** ✅ DONE (v3.8.0, GST App `7b9cc99`). New pure
+      `groupBookSplits()`; `reconcile()` now matches book groups vs consolidated 2B rows and writes the
+      result back to each member row; tolerance widens with lines summed on both sides. 4 tests (39 total).
 
 ### P1 — robustness
 - [ ] **Tier-4 (GSTIN+amount) is order-dependent greedy** (`core.mjs` tier-4 loop). An early bill can
@@ -51,8 +50,8 @@ names — becomes `rows`) and `app.js` integration. The nastiest real-world bugs
 there (column-alias drift, GSTIN/invoice extraction). Inspect next.
 
 ## Recommended sequence
-P0-1 ✅ → **P0-2 (Wave 14, sharing the tolerance)** → expand fixtures (large-value, multi-line both
-sides, cross-period) → inspect the 2B import path → P1 items.
+P0-1 ✅ → P0-2 ✅ → **inspect the 2B import path (next)** → expand fixtures (large-value, multi-line both
+sides, cross-period) → P1 items.
 
 ## Gate note
 P0-1 shipped with unit/integration tests (the right gate for pure DOM-free logic) + a self-review.

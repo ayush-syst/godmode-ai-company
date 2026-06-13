@@ -12,9 +12,10 @@
 See the Decision Record: `brain/decisions/2026-06-13-first-product-gst-bill-assistant.md`.
 
 ⏭️ **NOW: Week 3 — drive GST Bill Assistant from ~6/10 to a paying CA firm.**
-Plan: `products/gst-bill-assistant/LAUNCH-PLAN.md`. **Phase A underway:** firsthand reconciliation
-assessment done (`products/gst-bill-assistant/PHASE-A-ASSESSMENT.md`); **P0-1 (line-aware tolerance)
-shipped to GST App v3.7.1** (commit `54e1c1c`, 35 tests green).
+Plan: `products/gst-bill-assistant/LAUNCH-PLAN.md`. **Phase A: both P0 (make-or-break) fixes shipped
+to GST App** — P0-1 line-aware tolerance (v3.7.1, `54e1c1c`) and P0-2 Wave 14 book-side split
+consolidation (v3.8.0, `7b9cc99`). **39/39 tests green.** Assessment:
+`products/gst-bill-assistant/PHASE-A-ASSESSMENT.md`.
 
 ---
 
@@ -42,17 +43,23 @@ shipped to GST App v3.7.1** (commit `54e1c1c`, 35 tests green).
   must be bulletproof, (4) DPDP security posture.
 
 ## The immediate next action (Week 3, Phase A — continued)
-P0-1 (tolerance) is shipped (GST App v3.7.1). Next, per `products/gst-bill-assistant/PHASE-A-ASSESSMENT.md`:
-1. **P0-2 — Wave 14 book-side split consolidation** (`groupBookSplits()` + a `reconcile()` pre-pass;
-   reuse `effectiveTolerance` with the combined line count).
-2. **Inspect the 2B import path** (`app.js` + how a real GST-portal export becomes `rows`) — the
+Both P0 fixes shipped (GST App v3.8.0, 39 tests). Next, per `products/gst-bill-assistant/PHASE-A-ASSESSMENT.md`:
+1. **Inspect the 2B import path** (`app.js` + how a real GST-portal export becomes `rows`) — the
    "known unknown" to close before calling reconciliation bulletproof.
-3. Then the P1 items (deterministic tier-4 assignment, date disambiguation, ambiguous-fallback flagging).
-4. **In parallel:** recruit 3–5 small CA-firm design partners (GTM thread).
+2. Then the P1 items (deterministic tier-4 assignment, date disambiguation, ambiguous-fallback flagging).
+3. **In parallel:** recruit 3–5 small CA-firm design partners (GTM thread).
 
-> Code work lives in the GST App repo (`C:\Users\Ayush\OneDrive\Desktop\GST App`, AGPL-3.0). Commit +
-> push from **Windows git** (WSL push hangs — see memory `god-git-push-from-windows-not-wsl`). Pushing
-> to either repo's `main` needs explicit founder authorization each time (Auto Mode gate).
+## Operating notes for a fresh chat (read these)
+> **Two repos / two folders.** Product CODE → `C:\Users\Ayush\OneDrive\Desktop\GST App` (AGPL-3.0) →
+> commits to `gst-bill-assistant`. Planning/decisions/handoff → `...\Desktop\GOD` (MIT) → commits to
+> `godmode-ai-company`. GST Bill Assistant was already built (v3.7.0, 13 waves) BEFORE GOD — we are
+> adding onto it, not starting fresh.
+> **See the product:** in GST App run `npm run dev` (Windows node) → http://localhost:4173/app.html →
+> "Load Sample Data". **Tests:** `npm test` (Windows node — WSL has no node). 39 green.
+> **Pushes:** Windows git only (WSL push hangs — see memory `god-git-push-from-windows-not-wsl`); push
+> to `main` needs explicit founder OK each time (Auto Mode gate). Founder must add the git-push allow
+> rule themselves — the agent cannot self-modify `.claude/settings.local.json`.
+> **Founder feedback: commit LESS often** — batch work, commit once per clear milestone, not per step.
 
 ## Critical operational notes (carried from Week 1)
 - **LiteLLM start:** `cd /mnt/c/Users/Ayush/OneDrive/Desktop/GOD && source .venv/bin/activate && unset DATABASE_URL && set -a && source .env && set +a && litellm --config bootstrap/litellm-config-simple.yaml`
